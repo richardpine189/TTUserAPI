@@ -1,14 +1,1 @@
-{
-  "users": [
-    {
-        "id": 1,
-        "name": "Rick pine",
-        "email": "qweasdasdasd"
-    },
-    {
-        "id": 2,
-        "name": "Theo Katz",
-        "email": "test"
-    }
-  ]
-}
+[{"id":1,"name":"Theo","email":"theo@gmail.com","coin":0,"victories":2},{"id":2,"name":"Ricardo","email":"Ricardo@hotmail.com","coin":0,"victories":2}]

@@ -8,9 +8,11 @@ interface IUserRepository {
 
     fun getUsers(): List<User>
 
-    fun addVictory(userId : Int)
-
     fun saveUsers()
 
+    fun GenerateSaveFile()
+
     fun getOpponentFor(challengerUser: String): User
+
+    fun addVictory(userName: String)
 }

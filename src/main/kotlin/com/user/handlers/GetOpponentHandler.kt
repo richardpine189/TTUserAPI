@@ -10,9 +10,12 @@ import io.ktor.util.pipeline.*
 import kotlin.text.get
 
 class GetOpponentHandler(private val getOpponentUseCase: IGetOpponent) : Handler {
+
+    private val PATH = "/getOpponent/{userName}"
+
     override fun routing(a: Application) {
         a.routing {
-            route("/getOpponent/{userName}"){
+            route(PATH) {
                 get { getOpponent() }
             }
         }

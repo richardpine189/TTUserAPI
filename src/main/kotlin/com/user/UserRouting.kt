@@ -28,6 +28,9 @@ fun Application.userRouting() {
     val logInHandler = HandlerProvider.logIn
     logInHandler.routing(this)
 
+    val addVictoryHandler = HandlerProvider.addVictory
+    addVictoryHandler.routing(this)
+
     routing {
         route( "/user" ) {
             get {
@@ -84,11 +87,6 @@ fun Application.userRouting() {
                 }
             }
 
-            get("/victories/{id}"){
-                val id = call.parameters["id"]?.toLongOrNull()
-
-                call.respond(3)
-            }
         }
     }
 }

@@ -12,7 +12,7 @@ import io.ktor.util.pipeline.*
 
 class LoginHandler(val logInUseCase : ILogInUseCase) : Handler {
 
-    private val PATH = "/logIn/{userName}"
+    private val PATH = "/logIn"
 
     override fun routing(a: Application) {
         // Login by username
