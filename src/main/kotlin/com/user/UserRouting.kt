@@ -3,6 +3,7 @@ package com.user
 import com.user.actions.GetAllUsers
 import com.user.actions.GetOpponentUseCase
 import com.user.handlers.GetOpponentHandler
+import com.user.handlers.LoginHandler
 import com.user.interfaces.IUserRepository
 import com.user.models.User
 import com.user.providers.HandlerProvider
@@ -23,6 +24,9 @@ fun Application.userRouting() {
 
     val getOpponentHandler = HandlerProvider.getOpponent
     getOpponentHandler.routing(this)
+
+    val logInHandler = HandlerProvider.logIn
+    logInHandler.routing(this)
 
     routing {
         route( "/user" ) {
