@@ -1,5 +1,6 @@
 package com.user.handlers
 
+import com.user.interfaces.Handler
 import com.user.interfaces.IGetOpponent
 import io.ktor.http.*
 import io.ktor.server.application.*
@@ -18,13 +19,9 @@ class GetOpponentHandler(private val getOpponentUseCase: IGetOpponent) : Handler
     }
 
     suspend fun PipelineContext<Unit, ApplicationCall>.getOpponent() {
-//        val challengerUser = context.parameters["challengerUser"]
-//        val opponent = getOpponentUseCase(challengerUser!!)
-//        call.respond(opponent)
+        val challengerUser = context.parameters["userName"]
+        val opponent = getOpponentUseCase(challengerUser!!)
+        call.respond(opponent)
         call.respond(HttpStatusCode.OK)
     }
-}
-
-interface Handler {
-    fun routing(a: Application)
 }

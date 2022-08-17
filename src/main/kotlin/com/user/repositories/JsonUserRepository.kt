@@ -8,6 +8,10 @@ import kotlinx.serialization.json.Json
 import java.io.File
 
 class JsonUserRepository(val path : String) : IUserRepository{
+    override fun getUserByName(userName: String): User {
+        TODO("Not yet implemented")
+    }
+
     override fun getUsers(): List<User> {
         return Json.decodeFromString<List<User>>(File(path).readText(Charsets.UTF_8))
     }

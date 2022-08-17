@@ -1,8 +1,11 @@
 package com.user
 
 import com.user.actions.GetAllUsers
+import com.user.actions.GetOpponentUseCase
+import com.user.handlers.GetOpponentHandler
 import com.user.interfaces.IUserRepository
 import com.user.models.User
+import com.user.providers.HandlerProvider
 import com.user.repositories.JsonUserRepository
 import io.ktor.http.*
 import io.ktor.server.application.*
@@ -16,11 +19,11 @@ val users = mutableListOf(
     User(3, "Romina", "ro@mina.com")
 )
 
-// Create repository (where should this be?)
-//val userRepository : IUserRepository = JsonUserRepository("users.json");
-val userRepository : IUserRepository = JsonUserRepository("testUsers.json");
-
 fun Application.userRouting() {
+
+    val getOpponentHandler = HandlerProvider.getOpponent
+    getOpponentHandler.routing(this)
+
     routing {
         route( "/user" ) {
             get {
@@ -43,37 +46,6 @@ fun Application.userRouting() {
                         {
                             null -> call.respond(HttpStatusCode.NotFound, "Not found at all")
                             else -> call.respond(user)
-                        }
-                    }
-                }
-            }
-
-            get("/getOpponent/{userName}")
-            {
-                val userName = call.parameters["userName"]?.toString()
-
-                call.respond(users[1].name)
-            }
-
-            // Login by username
-            post("/logIn") {
-                val formParameters = call.receiveParameters()
-                val username = formParameters["userName"].toString()
-
-                val result = when(username)
-                {
-                    null -> call.respond(HttpStatusCode.BadRequest, "Must send a Username")
-                    else -> {
-                        val user = users.firstOrNull{it.name == username}
-//                        Thread.sleep(2000)
-                        when(user)
-                        {
-                            null -> call.respond(HttpStatusCode.NotFound, "User not found")
-                            // Coin assignment is hardcoded here
-                            else -> {
-                                user.coin = (5..20).random()
-                                call.respond(user)
-                            }
                         }
                     }
                 }
