@@ -8,7 +8,7 @@ interface IUserRepository {
 
     fun getUsers(): List<User>
 
-    fun saveUsers()
+    fun saveUser(user: User)
 
     fun GenerateSaveFile()
 

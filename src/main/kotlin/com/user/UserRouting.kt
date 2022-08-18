@@ -57,36 +57,6 @@ fun Application.userRouting() {
                     }
                 }
             }
-
-            post {
-                val candidate = call.receive<User>()
-
-                users.add(candidate)
-                call.respond(HttpStatusCode.Created)
-            }
-
-            put {
-                val candidate = call.receive<User>()
-
-                for(user in users)
-                {
-                    if(user.id == candidate.id)
-                    {
-                        users[users.indexOf(user)] = candidate
-                        call.respond("Updated")
-                    }
-                }
-            }
-
-            delete("{id?}") {
-                val id = call.parameters["id"] ?: return@delete call.respond(HttpStatusCode.BadRequest)
-                if (users.removeIf { it.id == id.toLong() }) {
-                    call.respondText("User removed correctly", status = HttpStatusCode.Accepted)
-                } else {
-                    call.respondText("Not Found", status = HttpStatusCode.NotFound)
-                }
-            }
-
         }
     }
 }

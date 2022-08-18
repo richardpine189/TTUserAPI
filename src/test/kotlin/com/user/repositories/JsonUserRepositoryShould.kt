@@ -9,10 +9,7 @@ class JsonUserRepositoryShould {
 
     val repository : JsonUserRepository = JsonUserRepository(GatewayConfig.getTestUsersFilePath)
 
-    @Test
-    fun `SaveNewUser`() {
-        repository.saveUsers()
-    }
+
 
     @Test
     fun `ReadUsers`() {
@@ -24,7 +21,7 @@ class JsonUserRepositoryShould {
     @Test
     fun `Get One User by userName`()
     {
-        var resultUser = repository.getUserByName("Rick pine")
+        var resultUser = repository.getUserByName("Ricardo")
 
         assertNotNull(resultUser)
     }

@@ -18,8 +18,13 @@ class JsonUserRepository(val path : String) : IUserRepository{
         return Json.decodeFromString<List<User>>(File(path).readText(Charsets.UTF_8))
     }
 
-    override fun saveUsers() {
-        TODO("Not yet implemented")
+    override fun saveUser(user: User) {
+        val userList : MutableList<User> = getUsers().toMutableList()
+        userList.removeIf{ it.name == user.name}
+        userList.add(user)
+        val formatter = Json { encodeDefaults = true }
+        val json = formatter.encodeToString(userList)
+        File(path).writeText(json)
     }
 
     override fun GenerateSaveFile() {
@@ -46,6 +51,6 @@ class JsonUserRepository(val path : String) : IUserRepository{
     override fun addVictory(userName: String) {
         val user = getUserByName(userName)
         user.victories++
-
+        saveUser(user)
     }
 }
