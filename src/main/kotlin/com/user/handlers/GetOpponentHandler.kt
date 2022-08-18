@@ -24,7 +24,7 @@ class GetOpponentHandler(private val getOpponentUseCase: IGetOpponent) : Handler
     suspend fun PipelineContext<Unit, ApplicationCall>.getOpponent() {
         val challengerUser = context.parameters["userName"]
         val opponent = getOpponentUseCase(challengerUser!!)
-        call.respond(opponent)
+        call.respond(opponent.name)
         call.respond(HttpStatusCode.OK)
     }
 }
