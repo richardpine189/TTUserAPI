@@ -1,5 +1,7 @@
 package com.user.providers
 
+import io.ktor.server.util.*
+import org.ktorm.database.Database
 object GatewayConfig {
     val getUsersFilePath by lazy {
         "src/main/kotlin/com/user/User.json"

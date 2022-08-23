@@ -7,6 +7,7 @@ import com.user.interfaces.IGetOpponent
 import com.user.models.User
 import io.ktor.server.application.*
 import com.user.plugins.*
+import com.user.providers.GatewayConfig
 import java.io.File
 
 fun main(args: Array<String>): Unit =
@@ -17,4 +18,5 @@ fun Application.module() {
     configureRouting()
     configureSerialization()
     userRouting()
+
 }

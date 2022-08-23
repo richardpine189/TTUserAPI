@@ -1,18 +1,24 @@
 package com.user
 
-import com.user.actions.GetAllUsers
-import com.user.actions.GetOpponentUseCase
-import com.user.handlers.GetOpponentHandler
-import com.user.handlers.LoginHandler
-import com.user.interfaces.IUserRepository
+import com.user.db.DatabaseConnection
+import com.user.entities.UserEntity
 import com.user.models.User
+import com.user.providers.GatewayConfig
 import com.user.providers.HandlerProvider
-import com.user.repositories.JsonUserRepository
 import io.ktor.http.*
+import io.ktor.network.sockets.*
 import io.ktor.server.application.*
 import io.ktor.server.request.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
+import org.ktorm.dsl.forEach
+import org.ktorm.dsl.from
+import org.ktorm.dsl.map
+import org.ktorm.dsl.select
+import java.sql.Connection
+import java.sql.DriverManager
+import java.util.function.LongToDoubleFunction
+
 
 val users = mutableListOf(
     User(1, "Theo", "theo@gmail.com"),
@@ -31,6 +37,8 @@ fun Application.userRouting() {
     val addVictoryHandler = HandlerProvider.addVictory
     addVictoryHandler.routing(this)
 
+    val db = DatabaseConnection.database
+
     routing {
         route( "/user" ) {
             get {
@@ -39,7 +47,15 @@ fun Application.userRouting() {
 //                var jsonUsers = action.invoke();
 //
 //                call.respond(jsonUsers)
-                call.respond(users)
+                //call.respond(users) with list
+                val allUsers = db.from(UserEntity).select().map{
+                    val id = it[UserEntity.id]!!.toLong()
+                    val name = it[UserEntity.name]!!
+                    val email = it[UserEntity.email]!!
+                    User(id,name,email)
+                }
+                allUsers.forEach{ println(it.name)}
+                call.respond(allUsers)
             }
 
             get("/{id}"){
