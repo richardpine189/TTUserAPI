@@ -12,6 +12,8 @@ object DatabaseConnection {
     )
 }
 
+val db = DatabaseConnection.database
+
 
 //remote
 /*object DatabaseConnection {

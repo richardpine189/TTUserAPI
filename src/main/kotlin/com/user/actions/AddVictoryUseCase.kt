@@ -7,7 +7,12 @@ class AddVictoryUseCase(val userRepository: IUserRepository) : IAddVictory {
 
     override fun invoke(userName: String): Boolean {
         try {
-            userRepository.addVictory(userName)
+            var user = userRepository.getUserByName(userName)
+
+            user.victories += 1
+            user.coin += 100
+
+            userRepository.saveUser(user)
         }
         catch (e : Exception) {
             return false

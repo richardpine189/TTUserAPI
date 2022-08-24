@@ -25,17 +25,4 @@ class JsonUserRepositoryShould {
 
         assertNotNull(resultUser)
     }
-
-    @Test
-    fun `Add Victory to User`()
-    {
-        val userName = "Theo"
-        val user = repository.getUserByName(userName)
-        val previousVictories = user.victories
-        repository.addVictory(userName)
-        val newUser = repository.getUserByName(userName)
-        val currentVictories = newUser.victories
-
-        assertEquals(previousVictories + 1, currentVictories)
-    }
 }

@@ -48,10 +48,10 @@ class JsonUserRepository(val path : String) : IUserRepository{
         return users.first{ it.name != challengerUser }
     }
 
-    override fun addVictory(userName: String) {
-        val user = getUserByName(userName)
-        user.victories++
-        user.coin += 100 // MAGIC NUMBER
-        saveUser(user)
-    }
+//    override fun addVictory(userName: String) {
+//        val user = getUserByName(userName)
+//        user.victories++
+//        user.coin += 100 // MAGIC NUMBER
+//        saveUser(user)
+//    }
 }

@@ -1,6 +1,7 @@
 package com.user.providers
 
 import com.user.handlers.AddVictoryHandler
+import com.user.handlers.GetAllUsersHandler
 import com.user.handlers.GetOpponentHandler
 import com.user.handlers.LoginHandler
 
@@ -15,5 +16,9 @@ object HandlerProvider {
 
     val addVictory by lazy {
         AddVictoryHandler(UseCaseProvider.addVictory)
+    }
+
+    val getAllUsers by lazy {
+        GetAllUsersHandler(UseCaseProvider.getAllUsers)
     }
 }

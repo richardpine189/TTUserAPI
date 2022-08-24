@@ -37,27 +37,11 @@ fun Application.userRouting() {
     val addVictoryHandler = HandlerProvider.addVictory
     addVictoryHandler.routing(this)
 
-    val db = DatabaseConnection.database
+    val getAllUsersHandler = HandlerProvider.getAllUsers
+    getAllUsersHandler.routing(this)
 
     routing {
         route( "/user" ) {
-            get {
-//                userRepository.saveUsers()
-//                val action : GetAllUsers = GetAllUsers(userRepository)
-//                var jsonUsers = action.invoke();
-//
-//                call.respond(jsonUsers)
-                //call.respond(users) with list
-                val allUsers = db.from(UserEntity).select().map{
-                    val id = it[UserEntity.id]!!.toLong()
-                    val name = it[UserEntity.name]!!
-                    val email = it[UserEntity.email]!!
-                    User(id,name,email)
-                }
-                allUsers.forEach{ println(it.name)}
-                call.respond(allUsers)
-            }
-
             get("/{id}"){
                 val id = call.parameters["id"]?.toLongOrNull()
                 val result = when(id)

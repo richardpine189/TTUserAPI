@@ -10,9 +10,5 @@ interface IUserRepository {
 
     fun saveUser(user: User)
 
-    fun GenerateSaveFile()
-
     fun getOpponentFor(challengerUser: String): User
-
-    fun addVictory(userName: String)
 }
