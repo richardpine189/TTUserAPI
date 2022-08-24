@@ -51,6 +51,7 @@ class JsonUserRepository(val path : String) : IUserRepository{
     override fun addVictory(userName: String) {
         val user = getUserByName(userName)
         user.victories++
+        user.coin += 100 // MAGIC NUMBER
         saveUser(user)
     }
 }

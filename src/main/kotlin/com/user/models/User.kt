@@ -7,5 +7,5 @@ import kotlinx.serialization.Serializable
 data class User(val id: Long, var name: String, var email: String)
 {
     var coin = 0
-    var victories = 2
+    var victories = 0
 }

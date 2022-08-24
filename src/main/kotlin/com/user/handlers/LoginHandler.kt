@@ -30,12 +30,9 @@ class LoginHandler(val logInUseCase : ILogInUseCase) : Handler {
         val result = when (username) {
             null -> call.respond(HttpStatusCode.BadRequest, "Must send a Username")
             else -> {
-                val user = logInUseCase(username)
-                when (user) {
+                when (val user = logInUseCase(username)) {
                     null -> call.respond(HttpStatusCode.NotFound, "User not found")
-                    // Coin assignment is hardcoded here
                     else -> {
-                        user.coin = (5..20).random()
                         call.respond(user)
                     }
                 }

@@ -21,8 +21,9 @@ class AddVictoryHandler(private val addVictoryUseCase : IAddVictory) : Handler {
     }
 
     suspend fun PipelineContext<Unit, ApplicationCall>.addVictory() {
-        val formParameters = call.receiveParameters()
-        val userName = formParameters["userName"].toString()
+        val userName = call.receiveText()
+        println(userName)
+
 
         if(addVictoryUseCase(userName))
         {
