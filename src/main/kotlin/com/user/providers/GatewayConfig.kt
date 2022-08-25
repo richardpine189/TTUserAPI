@@ -1,7 +1,7 @@
 package com.user.providers
 
-import io.ktor.server.util.*
-import org.ktorm.database.Database
+import com.user.providers.db.DatabaseConnectionProvider
+
 object GatewayConfig {
     val getUsersFilePath by lazy {
         "src/main/kotlin/com/user/User.json"
@@ -9,5 +9,8 @@ object GatewayConfig {
 
     val getTestUsersFilePath by lazy {
         "src/test/kotlin/com/user/repositories/testUsers.json"
+    }
+    val getDatabaseConection by lazy {
+        DatabaseConnectionProvider.remoteDatabase
     }
 }

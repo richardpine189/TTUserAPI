@@ -1,23 +1,11 @@
 package com.user
 
-import com.user.db.DatabaseConnection
-import com.user.entities.UserEntity
 import com.user.models.User
-import com.user.providers.GatewayConfig
 import com.user.providers.HandlerProvider
 import io.ktor.http.*
-import io.ktor.network.sockets.*
 import io.ktor.server.application.*
-import io.ktor.server.request.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
-import org.ktorm.dsl.forEach
-import org.ktorm.dsl.from
-import org.ktorm.dsl.map
-import org.ktorm.dsl.select
-import java.sql.Connection
-import java.sql.DriverManager
-import java.util.function.LongToDoubleFunction
 
 
 val users = mutableListOf(

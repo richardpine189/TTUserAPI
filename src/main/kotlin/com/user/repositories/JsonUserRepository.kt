@@ -27,7 +27,7 @@ class JsonUserRepository(val path : String) : IUserRepository{
         File(path).writeText(json)
     }
 
-    override fun GenerateSaveFile() {
+    /*override fun GenerateSaveFile() {
         val userList : List<User> = listOf(
             User(1, "Theo", "theo@gmail.com"),
             User(2, "Ricardo", "Ricardo@hotmail.com")
@@ -40,7 +40,7 @@ class JsonUserRepository(val path : String) : IUserRepository{
         val json = formatter.encodeToString(userList)
 
         File(path).writeText(json)
-    }
+    }*/
 
     override fun getOpponentFor(challengerUser: String): User {
         val users = getUsers()
