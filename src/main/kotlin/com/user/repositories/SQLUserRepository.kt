@@ -4,6 +4,7 @@ import com.user.entities.UserEntity
 import com.user.interfaces.IUserRepository
 import com.user.models.User
 import io.ktor.network.sockets.*
+import io.ktor.server.plugins.*
 import org.ktorm.database.Database
 import org.ktorm.dsl.*
 import org.ktorm.expression.ColumnExpression
@@ -12,7 +13,7 @@ import org.ktorm.expression.OrderType
 
 class SQLUserRepository(private val db : Database) : IUserRepository  {
     override fun getUserByName(userName: String): User {
-        val user = db.from(UserEntity).select()
+        val users = db.from(UserEntity).select()
             .where{ UserEntity.name eq userName }
             .map{
                 val id = it[UserEntity.id]!!.toLong()
@@ -22,9 +23,13 @@ class SQLUserRepository(private val db : Database) : IUserRepository  {
                 val victories = it[UserEntity.victories]!!.toInt()
                 User(id,name,email, coin, victories)
             }
-            .first()
 
-        return user
+        if(users.isEmpty())
+        {
+            throw NotFoundException("User not found.")
+        }
+
+        return users.first()
     }
 
     override fun getUsers(): List<User> {

@@ -30,11 +30,14 @@ class LoginHandler(val logInUseCase : ILogInUseCase) : Handler {
         val result = when (username) {
             null -> call.respond(HttpStatusCode.BadRequest, "Must send a Username")
             else -> {
-                when (val user = logInUseCase(username)) {
-                    null -> call.respond(HttpStatusCode.NotFound, "User not found")
-                    else -> {
-                        call.respond(user)
-                    }
+                try
+                {
+                    val user = logInUseCase(username)
+                    call.respond(user)
+                }
+                catch (e : Exception)
+                {
+                    call.respond(HttpStatusCode.NotFound, "User not found in Database.")
                 }
             }
         }
