@@ -48,6 +48,10 @@ class JsonUserRepository(val path : String) : IUserRepository{
         return users.first{ it.name != challengerUser }
     }
 
+    override fun createUser(userName: String, email: String): User {
+        TODO("Not yet implemented")
+    }
+
 //    override fun addVictory(userName: String) {
 //        val user = getUserByName(userName)
 //        user.victories++
