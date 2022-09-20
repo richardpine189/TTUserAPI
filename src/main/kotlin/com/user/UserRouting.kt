@@ -28,6 +28,9 @@ fun Application.userRouting() {
     val getAllUsersHandler = HandlerProvider.getAllUsers
     getAllUsersHandler.routing(this)
 
+    val createUserHandler = HandlerProvider.createUser
+    createUserHandler.routing(this)
+
     routing {
         route( "/user" ) {
             get("/{id}"){

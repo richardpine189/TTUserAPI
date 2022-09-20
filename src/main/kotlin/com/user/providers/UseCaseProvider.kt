@@ -1,9 +1,6 @@
 package com.user.providers
 
-import com.user.actions.AddVictoryUseCase
-import com.user.actions.GetAllUsers
-import com.user.actions.GetOpponentUseCase
-import com.user.actions.LogInUseCase
+import com.user.actions.*
 
 object UseCaseProvider {
     val getOpponent by lazy {
@@ -20,5 +17,9 @@ object UseCaseProvider {
 
     val getAllUsers by lazy {
         GetAllUsers(RepositoryProvider.getUsersRepository)
+    }
+
+    val createUser by lazy {
+        CreateUserUseCase(RepositoryProvider.getUsersRepository)
     }
 }

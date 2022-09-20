@@ -11,4 +11,6 @@ interface IUserRepository {
     fun saveUser(user: User)
 
     fun getOpponentFor(challengerUser: String): User
+
+    fun createUser(userName: String, email: String) : User
 }

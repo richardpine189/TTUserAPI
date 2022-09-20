@@ -10,6 +10,7 @@ import org.ktorm.dsl.*
 import org.ktorm.expression.ColumnExpression
 import org.ktorm.expression.OrderByExpression
 import org.ktorm.expression.OrderType
+import java.util.Random
 
 class SQLUserRepository(private val db : Database) : IUserRepository  {
     override fun getUserByName(userName: String): User {
@@ -55,16 +56,19 @@ class SQLUserRepository(private val db : Database) : IUserRepository  {
     }
 
     override fun getOpponentFor(challengerUser: String): User {
-        return db.from(UserEntity).select()
-            .where { UserEntity.name notEq challengerUser }
-            .map{
-                val id = it[UserEntity.id]!!.toLong()
-                val name = it[UserEntity.name]!!
-                val email = it[UserEntity.email]!!
-                val coin = it[UserEntity.coin]!!.toInt()
-                val victories = it[UserEntity.victories]!!.toInt()
-                User(id,name,email, coin, victories)
-            }
-            .first()
+        val users = getUsers()
+
+        return users.random();
+    }
+
+    override fun createUser(userName: String, email: String): User {
+        db.insertAndGenerateKey(UserEntity){
+            set(it.name, userName)
+            set(it.email, email)
+            set(it.coin, 0)
+            set(it.victories, 0)
+        }
+
+        return getUserByName(userName)
     }
 }
