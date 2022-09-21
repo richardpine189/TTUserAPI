@@ -56,7 +56,16 @@ class SQLUserRepository(private val db : Database) : IUserRepository  {
     }
 
     override fun getOpponentFor(challengerUser: String): User {
-        val users = getUsers()
+        val users = db.from(UserEntity).select()
+            .where{ UserEntity.name notEq challengerUser }
+            .map{
+                val id = it[UserEntity.id]!!.toLong()
+                val name = it[UserEntity.name]!!
+                val email = it[UserEntity.email]!!
+                val coin = it[UserEntity.coin]!!.toInt()
+                val victories = it[UserEntity.victories]!!.toInt()
+                User(id,name,email, coin, victories)
+            }
 
         return users.random();
     }
