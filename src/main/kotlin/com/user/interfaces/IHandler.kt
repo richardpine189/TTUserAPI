@@ -2,6 +2,6 @@ package com.user.interfaces
 
 import io.ktor.server.application.*
 
-interface Handler {
+interface IHandler {
     fun routing(a: Application)
 }

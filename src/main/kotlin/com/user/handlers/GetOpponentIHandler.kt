@@ -1,15 +1,14 @@
 package com.user.handlers
 
-import com.user.interfaces.Handler
+import com.user.interfaces.IHandler
 import com.user.interfaces.IGetOpponent
 import io.ktor.http.*
 import io.ktor.server.application.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
 import io.ktor.util.pipeline.*
-import kotlin.text.get
 
-class GetOpponentHandler(private val getOpponentUseCase: IGetOpponent) : Handler {
+class GetOpponentIHandler(private val getOpponentUseCase: IGetOpponent) : IHandler {
 
     private val PATH = "/getOpponent/{userName}"
 

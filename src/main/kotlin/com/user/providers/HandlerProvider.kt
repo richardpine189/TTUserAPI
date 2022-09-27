@@ -4,22 +4,26 @@ import com.user.handlers.*
 
 object HandlerProvider {
     val getOpponent by lazy {
-        GetOpponentHandler(UseCaseProvider.getOpponent)
+        GetOpponentIHandler(UseCaseProvider.getOpponent)
     }
 
     val logIn by lazy {
-        LoginHandler(UseCaseProvider.getLogIn)
+        LoginIHandler(UseCaseProvider.getLogIn)
     }
 
     val addVictory by lazy {
-        AddVictoryHandler(UseCaseProvider.addVictory)
+        AddVictoryIHandler(UseCaseProvider.addVictory)
     }
 
     val getAllUsers by lazy {
-        GetAllUsersHandler(UseCaseProvider.getAllUsers)
+        GetAllUsersIHandler(UseCaseProvider.getAllUsers)
     }
 
     val createUser by lazy {
-        CreateUserHandler(UseCaseProvider.createUser)
+        CreateUserIHandler(UseCaseProvider.createUser)
+    }
+
+    val remoteConfig by lazy{
+        RemoteConfigurationHandler()
     }
 }

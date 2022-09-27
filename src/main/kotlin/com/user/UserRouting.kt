@@ -1,5 +1,6 @@
 package com.user
 
+import com.user.handlers.RemoteConfigurationHandler
 import com.user.models.User
 import com.user.providers.HandlerProvider
 import io.ktor.http.*
@@ -30,6 +31,9 @@ fun Application.userRouting() {
 
     val createUserHandler = HandlerProvider.createUser
     createUserHandler.routing(this)
+
+    val remoteConfigurationHandler = HandlerProvider.remoteConfig
+    remoteConfigurationHandler.routing(this)
 
     routing {
         route( "/user" ) {

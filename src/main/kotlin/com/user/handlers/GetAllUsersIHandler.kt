@@ -1,15 +1,13 @@
 package com.user.handlers
 
-import com.user.interfaces.Handler
+import com.user.interfaces.IHandler
 import com.user.interfaces.IGetAllUsers
-import io.ktor.http.*
 import io.ktor.server.application.*
-import io.ktor.server.request.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
 import io.ktor.util.pipeline.*
 
-class GetAllUsersHandler(private val getAllUsersUseCase : IGetAllUsers) : Handler {
+class GetAllUsersIHandler(private val getAllUsersUseCase : IGetAllUsers) : IHandler {
 
     private val PATH = "/user"
 

@@ -9,7 +9,7 @@ import org.junit.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 
-class GetOpponentHandlerShould {
+class GetOpponentIHandlerShould {
 
     @Test
     fun `Return a user when request opponent`()
