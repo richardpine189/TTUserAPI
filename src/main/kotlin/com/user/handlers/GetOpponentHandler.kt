@@ -8,7 +8,7 @@ import io.ktor.server.response.*
 import io.ktor.server.routing.*
 import io.ktor.util.pipeline.*
 
-class GetOpponentIHandler(private val getOpponentUseCase: IGetOpponent) : IHandler {
+class GetOpponentHandler(private val getOpponentUseCase: IGetOpponent) : IHandler {
 
     private val PATH = "/getOpponent/{userName}"
 

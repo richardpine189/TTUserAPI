@@ -4,11 +4,11 @@ import com.user.handlers.*
 
 object HandlerProvider {
     val getOpponent by lazy {
-        GetOpponentIHandler(UseCaseProvider.getOpponent)
+        GetOpponentHandler(UseCaseProvider.getOpponent)
     }
 
     val logIn by lazy {
-        LoginIHandler(UseCaseProvider.getLogIn)
+        LoginHandler(UseCaseProvider.getLogIn)
     }
 
     val addVictory by lazy {

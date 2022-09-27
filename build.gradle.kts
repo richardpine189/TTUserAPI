@@ -36,7 +36,7 @@ dependencies {
     testImplementation("io.ktor:ktor-server-tests-jvm:$ktor_version")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version")
     testImplementation("org.mockito.kotlin:mockito-kotlin:4.0.0")
-
+    testImplementation("io.mockk:mockk:1.12.8")
 }
 
 tasks.create("stage") {

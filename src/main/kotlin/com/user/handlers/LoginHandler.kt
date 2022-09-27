@@ -9,7 +9,7 @@ import io.ktor.server.response.*
 import io.ktor.server.routing.*
 import io.ktor.util.pipeline.*
 
-class LoginIHandler(val logInUseCase : ILogInUseCase) : IHandler {
+class LoginHandler(val logInUseCase : ILogInUseCase) : IHandler {
 
     private val PATH = "/logIn"
 
