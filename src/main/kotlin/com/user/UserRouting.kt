@@ -9,11 +9,11 @@ import io.ktor.server.response.*
 import io.ktor.server.routing.*
 
 
-val users = mutableListOf(
+/*val users = mutableListOf(
     User(1, "Theo", "theo@gmail.com"),
     User(2, "Ricardo", "Ricardo@hotmail.com"),
     User(3, "Romina", "ro@mina.com")
-)
+)*/
 
 fun Application.userRouting() {
 
@@ -35,7 +35,7 @@ fun Application.userRouting() {
     val remoteConfigurationHandler = HandlerProvider.remoteConfig
     remoteConfigurationHandler.routing(this)
 
-    routing {
+    /*routing {
         route( "/user" ) {
             get("/{id}"){
                 val id = call.parameters["id"]?.toLongOrNull()
@@ -53,5 +53,5 @@ fun Application.userRouting() {
                 }
             }
         }
-    }
+    }*/
 }
