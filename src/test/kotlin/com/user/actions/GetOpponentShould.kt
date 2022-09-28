@@ -2,8 +2,8 @@ package com.user.actions
 
 import com.user.interfaces.IUserRepository
 import com.user.models.User
+import junit.framework.TestCase.assertEquals
 import org.junit.Test
-import kotlin.test.assertEquals
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.whenever
 
