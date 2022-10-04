@@ -10,6 +10,7 @@ object GatewayConfig {
     val getTestUsersFilePath by lazy {
         "src/test/kotlin/com/user/repositories/testUsers.json"
     }
+
     val getDatabaseConection by lazy {
         DatabaseConnectionProvider.remoteDatabase
     }
