@@ -71,6 +71,17 @@ class SQLUserRepository(private val db : Database) : IUserRepository  {
     }
 
     override fun createUser(userName: String, email: String): User {
+
+        val users = getUsers()
+
+        for (user in users)
+        {
+            if(user.name == userName)
+            {
+                throw Exception("UserName already exists in DB")
+            }
+        }
+
         db.insertAndGenerateKey(UserEntity){
             set(it.name, userName)
             set(it.email, email)

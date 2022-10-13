@@ -17,7 +17,6 @@ object DatabaseConnectionProvider {
         user = "h6p5beml4d5nycfr",
         password = "of855uiqmpfwzhy2"
     )
-
 }
 
 
