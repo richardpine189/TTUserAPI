@@ -1,5 +1,6 @@
 package com.user.handlers
 
+import com.user.Exceptions.UserNotFoundException
 import com.user.interfaces.IHandler
 import com.user.interfaces.IGetOpponent
 import io.ktor.http.*
@@ -22,9 +23,17 @@ class GetOpponentHandler(private val getOpponentUseCase: IGetOpponent) : IHandle
 
     suspend fun PipelineContext<Unit, ApplicationCall>.getOpponent() {
         val challengerUser = context.parameters["userName"]
-        val opponent = getOpponentUseCase(challengerUser!!)
-        println(opponent.name)
-        call.respond(opponent.name)
-        call.respond(HttpStatusCode.OK)
+
+        try {
+            val opponent = getOpponentUseCase(challengerUser!!)
+            call.respond(HttpStatusCode.OK)
+            call.respond(opponent.name)
+        }
+        catch (ex: UserNotFoundException)
+        {
+            call.respond(HttpStatusCode.NoContent, ex.message.toString())
+        }
+
+
     }
 }

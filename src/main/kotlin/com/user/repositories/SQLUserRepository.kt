@@ -1,5 +1,6 @@
 package com.user.repositories
 
+import com.user.Exceptions.UserNotFoundException
 import com.user.entities.UserEntity
 import com.user.interfaces.IUserRepository
 import com.user.models.User
@@ -66,7 +67,10 @@ class SQLUserRepository(private val db : Database) : IUserRepository  {
                 val victories = it[UserEntity.victories]!!.toInt()
                 User(id,name,email, coin, victories)
             }
-
+        if(users.isEmpty())
+        {
+            throw UserNotFoundException()
+        }
         return users.random();
     }
 
@@ -78,7 +82,7 @@ class SQLUserRepository(private val db : Database) : IUserRepository  {
         {
             if(user.name == userName)
             {
-                throw Exception("UserName already exists in DB")
+                throw Exception("UserName already exists in DB.")
             }
         }
 
