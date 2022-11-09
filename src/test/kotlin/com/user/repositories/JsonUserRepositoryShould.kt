@@ -9,8 +9,6 @@ class JsonUserRepositoryShould {
 
     val repository : JsonUserRepository = JsonUserRepository(GatewayConfig.getTestUsersFilePath)
 
-
-
     @Test
     fun `ReadUsers`() {
         var users = repository.getUsers()

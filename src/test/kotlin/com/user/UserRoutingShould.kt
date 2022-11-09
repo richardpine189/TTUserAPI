@@ -14,11 +14,12 @@ import kotlin.test.Test
 import kotlin.test.assertEquals
 
 class UserRoutingShould {
-
+}
+    /*
     @Test
     fun testGetUsers() = testApplication {
         application {
-            userRouting()
+            TODO("Please write your test here")
         }
 
         client.get("/user").apply {
@@ -29,7 +30,7 @@ class UserRoutingShould {
     @Test
     fun getUserById() = testApplication {
         application {
-            userRouting()
+            TODO("Please write your test here")
         }
 
         client.get("/user/*").apply {
@@ -40,7 +41,7 @@ class UserRoutingShould {
     @Test
     fun postUser() = testApplication {
         application {
-            userRouting()
+            TODO("Please write your test here")
         }
 
         client.post("/user").apply {
@@ -51,7 +52,7 @@ class UserRoutingShould {
     @Test
     fun editUserWithPut() = testApplication {
         application {
-            userRouting()
+            TODO("Please write your test here")
         }
 
         client.put("/user").apply {
@@ -62,27 +63,11 @@ class UserRoutingShould {
     @Test
     fun deleteUserById() = testApplication {
         application {
-            userRouting()
+            TODO("Please write your test here")
         }
 
         client.delete("/user/{id}").apply {
             TODO("Please write your test here")
         }
     }
-
-    @Test
-    fun `Get victory count`() = testApplication {
-        application {
-            userRouting()
-        }
-
-        val expectedVictories = 3
-        val userId = 7
-
-        val response = client.get("/user/victories/${userId}")
-
-        val userVictories = Json.decodeFromString<Int>(response.bodyAsText())
-
-        assertEquals(expectedVictories, userVictories)
-    }
-}
+*/

@@ -1,6 +1,4 @@
 package com.user.models
-
-import com.user.Exceptions.NotEnoughCoinException
 import kotlinx.serialization.Serializable
 
 @Serializable

@@ -26,14 +26,12 @@ class GetOpponentHandler(private val getOpponentUseCase: IGetOpponent) : IHandle
 
         try {
             val opponent = getOpponentUseCase(challengerUser!!)
-            call.respond(HttpStatusCode.OK)
+            //call.respond(HttpStatusCode.OK)
             call.respond(opponent.name)
         }
         catch (ex: UserNotFoundException)
         {
             call.respond(HttpStatusCode.NoContent, ex.message.toString())
         }
-
-
     }
 }
