@@ -12,6 +12,6 @@ object GatewayConfig {
     }
 
     val getDatabaseConection by lazy {
-        DatabaseConnectionProvider.remoteDatabase
+        DatabaseConnectionProvider.localDatabase
     }
 }
